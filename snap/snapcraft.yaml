@@ -1,0 +1,35 @@
+name: restic-server
+base: core20
+version: '0.1'
+summary: Restic backup server
+description: |
+  Restic-server is a simple server for use with the restic backup tool.
+
+grade: devel # use 'stable' for release version
+confinement: strict
+
+apps:
+  restic-server:
+    command: bin/restic-server
+    plugs:
+      - network
+      - network-bind
+
+parts:
+  restic-server:
+    plugin: go
+    source: https://github.com/user/restic-server
+    source-tag: v0.1.0
+    go-importpath: github.com/user/restic-server
+
+  # Additional dependencies can be added here if needed
+  # For example, if your project needs additional libraries or tools, include them as parts.
+  # Example part for a dependency:
+  # libfoo:
+  #   plugin: make
+  #   source: https://example.com/libfoo-1.0.tar.gz
+
+  # Ensure any necessary build dependencies are listed here
+  build-packages:
+    - golang-go
+    - git
