@@ -21,5 +21,4 @@ parts:
     source: https://github.com/restic/rest-server
     source-tag: v0.12.1
     go-importpath: github.com/restic/rest-server
-    build-packages:
-      - git
+
